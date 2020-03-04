@@ -1,12 +1,11 @@
-FROM debian
+FROM alpine:latest
 
-RUN apt-get -y update \ 
-    && apt-get -y install \
-        ponysay \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apk update \
+    && apk add openssl python3 texinfo \
+    && wget -O ponysay.zip http://github.com/erkin/ponysay/archive/master.zip \
+    && unzip ponysay.zip && cd ponysay-master \ 
+    && ./setup.py install --freedom=partial \
+    && apk del openssl texinfo \
+    && rm -rf /ponysay.zip /ponysay-master /usr/lib/python*/__pycache__/*.pyc /var/cache/apk/*
 
-ENV TERM=xterm-256color
-ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-
-CMD ["ponysay"]
+ENTRYPOINT ["/usr/bin/ponysay"]

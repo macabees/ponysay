@@ -1,7 +1,7 @@
 # ponysay
-The 'ponysay' command is console application to display ponies speaking messagesl. 
+The 'ponysay' command is console application to display ponies speaking messages. 
 
-The 'ponysay' command is a cowsay reimplemention with ponies.
+The 'ponysay' command is a cowsay reimplementation with ponies.
 
 ## ponysay (Project Info)
 [Website](https://erkin.party/ponysay/)
@@ -19,6 +19,8 @@ Note: requires `docker login`
 
 ## Run image
 `$ docker run -it --rm macabees/ponysay 'Hello World!'`
+
+`echo "Hello World!" | docker run -i --rm macabees/ponysay --`
 
 ## Help
 `$ docker run -it --rm macabees/ponysay --help`
